@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;700&family=Inter:wght@400;600&display=swap');
+
+:root {
+  --retro-teal:   #127676;
+  --retro-orange: #E4632E;
+  --retro-jaune:  #E3A535;
+  --retro-ink:    #0D1617;
+  --retro-paper:  #F2EFE6;
+  --retro-state-success:  var(--retro-teal);
+  --retro-state-error:    var(--retro-orange);
+  --retro-state-warning:  var(--retro-jaune);
+  --retro-state-disabled: rgba(13, 22, 23, 0.4);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--retro-ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--retro-ink);
+  min-height: 100vh;
+}
+
+.page-frame {
+  background: var(--retro-paper);
+  border: 4px solid var(--retro-orange);
+  min-height: calc(100vh - 24px);
+  margin: 12px;
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Coins ornés */
+.corner-ornament {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  opacity: 0.5;
+}
+.corner-ornament.top-left    { top: 8px;  left: 8px; }
+.corner-ornament.top-right   { top: 8px;  right: 8px;  transform: scaleX(-1); }
+.corner-ornament.bottom-left { bottom: 8px; left: 8px;  transform: scaleY(-1); }
+.corner-ornament.bottom-right{ bottom: 8px; right: 8px;  transform: scale(-1,-1); }
+
+/* Titre principal */
+.page-title {
+  font-family: 'Anton', Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--retro-teal);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1;
+}
+.page-subtitle {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--retro-orange);
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+.header-band {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 32px;
+  border-bottom: 3px solid var(--retro-teal);
+  margin-bottom: 40px;
+}
+
+.badge-seq {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  background: var(--retro-teal);
+  color: var(--retro-paper);
+  padding: 6px 16px;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+
+/* Séparateur */
+.retro-separator {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 48px 0 36px;
+  color: var(--retro-teal);
+}
+.retro-separator::before,
+.retro-separator::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--retro-teal) 20%, var(--retro-teal) 80%, transparent);
+}
+.retro-separator span {
+  font-family: 'Anton', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--retro-teal);
+  white-space: nowrap;
+}
+
+/* Grille de profils */
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  gap: 32px;
+}
+
+/* Carte profil */
+.profile-card {
+  background: var(--retro-paper);
+  border: 3px solid var(--retro-teal);
+  border-radius: 24px 8px 24px 8px;
+  box-shadow: inset 0 0 0 2px rgba(228,99,46,0.25), 6px 6px 0 var(--retro-teal);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  background: var(--retro-ink);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  position: relative;
+}
+.card-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--retro-teal), var(--retro-orange), var(--retro-jaune));
+}
+
+.portrait-wrap {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--retro-orange);
+  background: var(--retro-teal);
+}
+.portrait-wrap svg { width: 100%; height: 100%; display: block; }
+
+.profile-identity { flex: 1; min-width: 0; }
+.profile-number {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--retro-orange);
+  margin-bottom: 2px;
+}
+.profile-name {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--retro-paper);
+  line-height: 1.1;
+}
+.profile-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: var(--retro-jaune);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.card-body { padding: 20px 24px; flex: 1; display: flex; flex-direction: column; gap: 16px; }
+
+/* Section traces */
+.traces-section { display: flex; flex-direction: column; gap: 10px; }
+.section-label {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--retro-teal);
+  border-bottom: 1px solid var(--retro-teal);
+  padding-bottom: 4px;
+  margin-bottom: 6px;
+}
+
+.trace-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.trace-logo {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+.trace-logo svg { width: 20px; height: 20px; }
+.trace-text {
+  font-size: 0.8rem;
+  color: var(--retro-ink);
+  line-height: 1.5;
+}
+.trace-text strong {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--retro-ink);
+  display: block;
+  margin-bottom: 1px;
+}
+
+/* Section exploitables */
+.exploit-section {
+  background: rgba(228,99,46,0.08);
+  border-left: 4px solid var(--retro-orange);
+  padding: 12px 14px;
+  border-radius: 0 8px 8px 0;
+  margin-top: auto;
+}
+.exploit-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--retro-orange);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.exploit-text {
+  font-size: 0.78rem;
+  color: var(--retro-ink);
+  line-height: 1.6;
+}
+
+/* Grille analyse formateur */
+.analysis-grid-section {
+  margin-top: 48px;
+  background: var(--retro-ink);
+  border: 3px solid var(--retro-teal);
+  border-radius: 24px 8px 24px 8px;
+  padding: 28px 32px;
+  box-shadow: 6px 6px 0 var(--retro-orange);
+}
+.analysis-grid-title {
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  color: var(--retro-jaune);
+  margin-bottom: 20px;
+}
+.analysis-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.analysis-table th {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--retro-teal);
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 2px solid var(--retro-teal);
+}
+.analysis-table td {
+  padding: 10px 14px;
+  color: var(--retro-paper);
+  border-bottom: 1px solid rgba(18,118,118,0.2);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.analysis-table tr:last-child td { border-bottom: none; }
+.analysis-table td:first-child {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  color: var(--retro-orange);
+  width: 45%;
+}
+.analysis-table td:last-child { color: rgba(242,239,230,0.75); font-style: italic; }
+
+/* Retro btn pill */
+.retro-btn-pill {
+  display: inline-flex;
+  border-radius: 50px;
+  border: 3px solid var(--retro-teal);
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+}
+.retro-btn-pill .label {
+  background: var(--retro-jaune);
+  color: var(--retro-ink);
+  padding: 0.6rem 1.5rem;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+}
+.retro-btn-pill .icon {
+  background: var(--retro-orange);
+  color: var(--retro-paper);
+  width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 600px) {
+  .page-frame { margin: 6px; padding: 24px 16px; }
+  .profiles-grid { grid-template-columns: 1fr; }
+  .header-band { flex-direction: column; align-items: flex-start; }
+}
